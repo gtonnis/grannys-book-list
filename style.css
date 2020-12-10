@@ -139,15 +139,21 @@ th, td {
       background-color: red;
   }
 
-  .btn-warning{
-      background-color: orange;
-  }
-
-
-  .newLabel{
-    background-color: lime; 
+// book status label style
+  .Unread {
+  background-color: yellow;
+  color: black;
+  box-shadow: 1px 1px black;
+    padding: 3px;
+    border-radius: 3px;
 }
 
+.Read {
+     box-shadow: 1px 1px black;
+  background-color: lime;
+    padding: 3px;
+    border-radius: 3px;
+}
   /* Style for sorting */
 .table-sortable .th-sort-asc::after{
  content: "\25b4";
