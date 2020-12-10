@@ -228,6 +228,24 @@ th, td {
     padding:0;
    }
 
+/*Dropdown style*/
+.dropbtn {
+  color: #fff;
+  text-shadow: 1px 1px #383838;
+  background-color: transparent;
+  padding: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button {
+  color: #383838;
+  background-color: #d0d0d0;
+  padding: 8px;
+  font-size: 10px;
+  cursor: pointer;
+}
 .dropdown {
   position: relative;
   display: inline-block;
