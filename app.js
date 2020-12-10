@@ -5,14 +5,14 @@ function saveBook(e) {
   let author = document.getElementById('author').value;
   let year = document.getElementById('year').value;
   let bookId = chance.guid();
-  let bookStatus = 'Need to Read';
+  let bookReadStatus = 'Unread';
 
   let book = {
     id: bookId,
     title: title,
     author: author,
     year: year,
-    read: bookStatus
+    read: bookReadStatus
   }
 
   if (author ==='' || title === ''|| year ===''){
@@ -30,31 +30,32 @@ function saveBook(e) {
     localStorage.setItem('books', JSON.stringify(books));
     showAlert('Book Added to List', 'success');
   }
-
+ 
   document.getElementById('book-form').reset();
  
   fetchBooks();
-
+ 
   e.preventDefault();
+ 
 }
 
 function markBookRead(id) {
-  
   let books = JSON.parse(localStorage.getItem('books'));
-
+ 
   for (let i = 0; i < books.length; i++) {
+   
     if (books[i].id === id) {
-      books[i].read = 'Read';  
+           books[i].read = 'Read'     
+       
     }
   }
- 
-
+  
   localStorage.setItem('books', JSON.stringify(books));
 
   fetchBooks();
-  showAlert('Book Marked Read', 'read');
-        
+  showAlert('Book Marked Read', 'read');      
 }
+
 
 
 
@@ -85,14 +86,16 @@ div.className = `alert alert-${className}`;
   setTimeout(() => document.querySelector('.alert').remove(), 2000);
 }
 
+ 
 
 
 function fetchBooks() {
+  
   let books = JSON.parse(localStorage.getItem('books'));
   let booksList = document.getElementById('booksList');
   
   booksList.innerHTML = '';
- 
+
 
   for (let i = 0; i < books.length; i++) {
     let author = books[i].author;
@@ -100,9 +103,10 @@ function fetchBooks() {
     let year = books[i].year;
      let id = books[i].id;
      let read = books[i].read; 
+   
 
        booksList.innerHTML +=  '<tr>' +
-            ' <td> <span id="label" class="label label-info">' +  read  + '</span> ' + '</td> ' +
+            ' <td> <span id="label" class="'+ read +'">' +  read  + '</span> ' + '</td> ' +
             '<td><button onclick="markBookRead(\''  +  id  + '\')" class="btn-warning">Mark Read</button></td> '  +
             '<td>' + author + ' </td> ' +
             ' <td>'  + title + ' </td>' +
@@ -112,10 +116,8 @@ function fetchBooks() {
     '</tr>';
    
   }
-  
-  
+   
 }
-
  
 //Sorting Books
 /**
@@ -161,4 +163,18 @@ document.querySelectorAll(".table-sortable th").forEach(headerCell => {
     });
 });
 
-//'<td><span class="glyphicon glyphicon-book"> Book-Information: </span></td>'  +
+ let btn1 = document.querySelector('#btn-1');
+            let btn2 = document.querySelector('#btn-2');
+            let btn3 = document.querySelector('#btn-3');
+            
+            btn1.addEventListener('click', () => {
+                document.body.style.backgroundImage = "url('images/old-books-1.jpg')";
+            });
+            
+             btn2.addEventListener('click', () => {
+                document.body.style.backgroundImage =  "url('images/dark-wood-3.jpg')";
+            });
+            
+             btn3.addEventListener('click', () => {
+                document.body.style.backgroundImage =   "url('images/library-1.jpg')";
+            });
